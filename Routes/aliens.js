@@ -18,6 +18,30 @@ Router.get('/', async (req, res) => {
       console.log("Error" + err);
    }
 });
+// Get One Aliens 
+Router.get('/:id', async (req, res) => {
+   try {
+      const ShowAlien = await Aliens.findById(req.params.id)
+
+      res.json(ShowAlien);
+
+   } catch (err) {
+      console.log("Error" + err);
+   }
+});
+
+
+// Delete the One Alien
+Router.delete('/:id', async (req, res) => {
+   try {
+      const ShowAlien = await Aliens.findByIdAndDelete(req.params.id)
+
+
+
+   } catch (err) {
+      console.log("Error" + err);
+   }
+});
 
 
 Router.post('/', async (req, res) => {
@@ -28,9 +52,22 @@ Router.post('/', async (req, res) => {
    } catch (error) {
       res.send(error)
    }
-   // createAlien.save();
+
 });
-// routes.put('/', );
-// routes.delete('/', );
+
+// UPdate A alien 
+Router.patch('/:id', async (req, res) => {
+   try {
+      const FindTheAlien = await Aliens.findById(req.params.id)
+      FindTheAlien.name = req.body.name
+      FindTheAlien.sub = req.body.sub
+      const al = await FindTheAlien.save();
+      res.send(al)
+   } catch (err) {
+
+      res.send(err)
+   }
+});
+
 
 module.exports = Router;
