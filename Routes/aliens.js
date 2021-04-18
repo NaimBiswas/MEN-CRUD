@@ -58,9 +58,11 @@ Router.post('/', async (req, res) => {
 // UPdate A alien 
 Router.patch('/:id', async (req, res) => {
    try {
+
       const FindTheAlien = await Aliens.findById(req.params.id)
       FindTheAlien.name = req.body.name
       FindTheAlien.sub = req.body.sub
+      // @ts-ignore
       const al = await FindTheAlien.save();
       res.send(al)
    } catch (err) {
