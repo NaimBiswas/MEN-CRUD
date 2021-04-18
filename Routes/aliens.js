@@ -18,7 +18,18 @@ Router.get('/', async (req, res) => {
       console.log("Error" + err);
    }
 });
-// routes.post('/', );
+
+
+Router.post('/', async (req, res) => {
+   const createAlien = new Aliens(req.body);
+   try {
+      const StogareData = await createAlien.save();
+      res.json(StogareData)
+   } catch (error) {
+      res.send(error)
+   }
+   // createAlien.save();
+});
 // routes.put('/', );
 // routes.delete('/', );
 

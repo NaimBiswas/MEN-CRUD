@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const app = express()
 const port = 3000
 const Aliensroute = require('./Routes/aliens')
-
+app.use(express.json());
 
 
 
