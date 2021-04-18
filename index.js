@@ -2,9 +2,13 @@ const express = require('express')
 const mongoose = require("mongoose")
 const app = express()
 const port = 3000
+const Aliensroute = require('./Routes/aliens')
+
+
+
 
 app.get('/', (req, res) => res.send('Hello World!'))
-
+app.use('/aliens', Aliensroute);
 
 app.listen(port, () => console.log(`Example app listening on port port!`))
 
